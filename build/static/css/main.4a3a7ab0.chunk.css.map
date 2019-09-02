@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css","index.css"],"names":[],"mappings":"AAAA,KACC,iBACD,CCFA,KACI,QACJ,CAEA,WACI,iBAAoB,CACpB,+DAEJ","file":"main.4a3a7ab0.chunk.css","sourcesContent":[".App {\n\ttext-align: center;\n}\n","body {\r\n    margin: 0;\r\n}\r\n\r\n@font-face {\r\n    font-family: \"Pixel\";\r\n    src: url(\"fonts/Pixel-LCD-7.woff\") format(\"woff\");\r\n\r\n}\r\n"]}
