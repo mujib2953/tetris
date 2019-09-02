@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 
 import { TETROMINOS, randomTetrominos } from "../utils/tetrominos";
-import { STAGE_WIDTH } from "../utils/gameHelpers";
+import { STAGE_WIDTH, checkCollision } from "../utils/gameHelpers";
 
 export const usePlayer = () => {
 
@@ -27,6 +27,20 @@ export const usePlayer = () => {
         const clonedPlayer = {...player};
 
         clonedPlayer.tetrominos = rotate(clonedPlayer.tetrominos, direction);
+
+        const pos = clonedPlayer.pos.x;
+        let offset = 1;
+        while (checkCollision(clonedPlayer, stage, { x: 0, y: 0 })) {
+            clonedPlayer.pos.x += offset;
+
+            offset = -(offset + (offset > 0 ? 1 : -1));
+
+            if (offset > clonedPlayer.tetrominos[0].length) {
+                rotate(clonedPlayer.tetrominos, direction);
+                clonedPlayer.pos.x = pos;
+                return;
+            }
+        }
 
         setPlayer(clonedPlayer);
     }
